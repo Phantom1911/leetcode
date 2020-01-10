@@ -1,11 +1,11 @@
 def kadanesAlgorithm(array):
-    # Write your code here.
-    ans = array[0]
-    curr_ans = array[0]
+    meh = array[0]
+    msf = array[0]
     for i in range(1, len(array)):
-        curr_ans += array[i]
-        if curr_ans > ans:
-            ans = curr_ans
-        if curr_ans < 0:
-            curr_ans = 0
-    return ans
+        meh = max(array[i], meh + array[i])
+        msf = max(msf, meh)
+    return msf
+
+
+if __name__=="__main__":
+    print(kadanesAlgorithm([-9, -1, -8]))

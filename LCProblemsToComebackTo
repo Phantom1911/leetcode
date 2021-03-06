@@ -1,0 +1,39 @@
+1. Sliding Window Maximum 239:
+
+https://leetcode.com/problems/sliding-window-maximum/submissions/
+
+getting TLE
+
+2. Min lights to activate :
+
+https://www.interviewbit.com/problems/minimum-lights-to-activate/
+
+normal approach can be to traverse the array and when you find a 1, make all the indices within distance X-B+1 and X+B-1 as 1. then you traverse the array again and if you find a 0, then the whole corridor can't be lighted
+
+aim is though to find min number of bulbs to switch on to light up the whole corridor
+in order to achieve this min number, you would want each bulb to have lit up from the bulb farthest from it. traverse the array. each idx can be faulty and not faulty. if it is not faulty, light it up
+
+3. Maximum sum triplet :
+
+https://www.interviewbit.com/problems/maximum-sum-triplet/
+
+getting TLE. BF approach:
+check if it's a valid triplet ie 0<=i<j<k and A[i]<A[j]<A[k] . for all such valid triplets , track the max sum.
+
+4. Min Comparisons to get max and min :
+
+https://www.interviewbit.com/problems/max-min-05542f2f-69aa-4253-9cc7-84eb7bf739c4/
+need to find min and max in min number of comparisons.
+if you assume first element in max, then max of array can be found in n-1 comparisons
+s'ly , for min in n-1 comparisons
+total = 2n -2 comparisons
+
+(sorting and returning min max is worse than this , since its lower bound is nLogn comparisons)
+check the solution hint : uses Divide and conquer
+
+5. Pick From Both Sides:
+
+https://www.interviewbit.com/problems/pick-from-both-sides/
+tried approach is in interviewBit/pickFromBothSides.py , which is wrong
+
+6.

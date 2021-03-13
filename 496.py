@@ -4,6 +4,9 @@ class Solution:
     def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
         nge_map = {}
         stack = []
+
+        # Although the question doesn't exactly require us to find nge of all elements in nums2, that's what we'll need to do
+
         n = len(nums2)
         for i in range(n):
             while stack and stack[-1] < nums2[i]:

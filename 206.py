@@ -9,16 +9,14 @@ class ListNode:
 
 class Solution:
     def reverseList(self, head: ListNode) -> ListNode:
-        if head.next is None:
+        if head is None or head.next is None:
             return head
         rem_list_reversed = self.reverseList(head.next)
-
-        # get to the end of rem_reversed_list
-
         p = rem_list_reversed
         while p.next is not None:
             p = p.next
         p.next = head
+        head.next = None
         return rem_list_reversed
 
 

@@ -12,7 +12,7 @@ class Solution:
         return res[0:n]
 
 
-# SOLUTION without using Python's list insert method
+# SOLUTION without using Python's list insert method -- WRONG IMPLEMENTATION [WIP]
 
 class Solution2:
     def createTargetArray(self, nums, index) :

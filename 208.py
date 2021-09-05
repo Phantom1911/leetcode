@@ -15,8 +15,8 @@ class Trie:
         """
         currentDict = self.root
         for letter in word:
-            currentDict = currentDict.setdefault(letter, {})
-        currentDict[self.endLetter] = '*'
+            currentDict = currentDict.setdefault(letter, {})  #checks if the key is present in currentDict, else puts it and sets the value as given value, and returnns it
+        currentDict[self.endLetter] = word    #we can make the value as word so we know what it is
 
     def search(self, word: str) -> bool:
         """
@@ -42,6 +42,9 @@ class Trie:
             currentDict = currentDict[letter]
         return True
 
+if __name__=="__main__":
+    obj = Trie()
+    obj.insert("word")
 # Your Trie object will be instantiated and called as such:
 # obj = Trie()
 # obj.insert(word)

@@ -7,6 +7,8 @@ class Node:
         self.right = right
         self.next = next
 """
+# the below is a bad solution since it uses extra space. There is an intelligent recursive way to do this after this solution
+
 from collections import deque
 
 
@@ -31,4 +33,22 @@ class Solution:
             next_level = deque([])
             if not curr_level:
                 break
+        return root
+
+# the intelligent recursive way
+
+def connectNodes(left, right):
+    if left is not None or right is not None:
+        left.next = right
+        connectNodes(left.right, right.left)
+    if left is not None:
+        connectNodes(left.left, left.right)
+    if right is not None:
+        connectNodes(right.left, right.right)
+
+
+class Solution:
+    def connect(self, root: 'Optional[Node]') -> 'Optional[Node]':
+        if root is None: return root
+        connectNodes(root.left, root.right)
         return root

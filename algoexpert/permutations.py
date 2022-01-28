@@ -1,4 +1,22 @@
-def getPermutations(array):
+def getPermutations1(array):
+    if len(array) == 0:
+		return []
+	if len(array) == 1:
+		return [[array[0]]]
+	remPerms = getPermutations(array[1:])
+	ans = []
+	for per in remPerms:
+		for i in range(len(per)+1):
+			newPer = insertAtIndex(array[0], i,per)
+			ans.append(newPer)
+	return ans
+
+def insertAtIndex(ele, i, arr):
+	return arr[0:i]+[ele]+arr[i:]
+
+
+
+def getPermutations2(array):
     # Write your code here.
     if len(array) == 0:
         return []

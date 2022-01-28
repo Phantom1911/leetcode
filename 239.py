@@ -1,5 +1,7 @@
 # a bit optimized solve, here we don't care what was the index of the max in the window , just check if the max was the first element of the previous
 # window -- gave TLE in LC
+import collections
+
 
 class Solution1:
     def maxSlidingWindow(self, nums, k):
@@ -108,7 +110,26 @@ class Solution2:
 
 #                 # now in order to get second max in new window , we would need third max, which we dont have :(
 
+# welcome back to sliding window max again after some months. here's deque based solve I got from discuss:
 
+class Solution3:
+    def maxSlidingWindow(self, nums, k) :
+        res = []
+        window = collections.deque()
+        for i, num in enumerate(nums):
+            while window and num >= nums[window[-1]]:
+                window.pop()
+            window.append(i)
+
+            if i + 1 >= k:
+                res.append(nums[window[0]])
+
+            if i - window[0] + 1 == k:
+                window.popleft()
+
+        return res
 if __name__=="__main__":
-    s1 = Solution1()
-    print(s1.maxSlidingWindow([1,3,-1,-3,5,3,6,7], 3))
+    s1 = Solution3()
+    print(s1.maxSlidingWindow(
+[7,2,4],
+2))

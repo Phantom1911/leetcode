@@ -26,5 +26,28 @@ class Solution:
         ans = (n * (n + 1)) // 2
         return ans
 
+
+class Solution2:
+    def uniqueLetterString(self, s: str) -> int:
+        dp = [[set() for i in range(len(s))] for i in range(len(s))]
+        n = len(s)
+        count = 0
+        for i in range(n):
+            dp[i][i].add(s[i])
+            count += len(dp[i][i])
+
+        for i in range(n - 2, -1, -1):
+            for j in range(i + 1, n):
+                dp[i][j].update(dp[i][j - 1])
+                if s[j] in dp[i][j - 1]:
+                    dp[i][j].remove(s[j])
+                else:
+                    if s[j] not in s[i:j]:
+                        dp[i][j].add(s[j])
+                count += len(dp[i][j])
+
+        return count
+
+
 if __name__=="__main__":
-    print(Solution().uniqueLetterString("ABCC"))
+    print(Solution2().uniqueLetterString("LEETCODE"))

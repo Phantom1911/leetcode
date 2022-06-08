@@ -16,10 +16,5 @@ def getlps(s):
         lps[i] = j
     return lps
 
-
-
-
-
-
 if __name__=="__main__":
     print(Solution().longestPrefix("ababab"))

@@ -1,3 +1,46 @@
+# optimal mainstack and childstack solution
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def zigzagLevelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+        if root is None:
+            return []
+        mainStack, childStack = [], []
+        mainStack.append(root)
+        ltor = True
+        ans = []
+        while True:
+            currlevel = []
+            while mainStack:
+                curr = mainStack.pop()
+                currlevel.append(curr.val)
+                if ltor:
+                    if curr.left:
+                        childStack.append(curr.left)
+                    if curr.right:
+                        childStack.append(curr.right)
+                else:
+                    if curr.right:
+                        childStack.append(curr.right)
+                    if curr.left:
+                        childStack.append(curr.left)
+            ans.append(currlevel)
+            mainStack = childStack
+            childStack = []
+            ltor = not ltor
+            if not mainStack:
+                break
+
+        return ans
+
+
+# below is bad approach
+
 from collections import deque
 class Solution:
     def zigzagLevelOrder(self, root: TreeNode) -> List[List[int]]:

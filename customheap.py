@@ -40,4 +40,3 @@ if __name__=="__main__":
     heapq.heapify(l2)
     while len(l2)>0:
         print(heapq.heappop(l2).name)
-
